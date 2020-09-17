@@ -7,85 +7,69 @@
 </head>
 <body>
     <script>
+        let selectOptions = ["Rock", "Paper", "Scissors"];
+        
+        function computerPlay(){
+            let random = Math.floor(Math.random() * selectOptions.length);
+            return selectOptions[random];      
+        }
+
+        function singleRound(playerSelection, computerSelection){
+            if(playerSelection === "rock" && computerSelection === "scissors" ||
+            playerSelection === "paper" && computerSelection === "rock" ||
+            playerSelection === "scissors"&&computerSelection === "paper"){
+            return 'win';
+            
+            }else if(computerSelection === "rock" && playerSelection === "scissors" ||
+            computerSelection === "paper" && playerSelection === "rock" ||
+            computerSelection === "scissors" && playerSelection === "paper") {
+                return "lose";
+                
+            }else{
+                return "tie";
+            }
+        }
+
         function game(){
+                
+            //winner counts
             let playerWinnings = 0;
             let computerWinnings = 0;
-            let declaration;
-            //player input
+            let computerSelection = computerPlay()
             for(let i = 0; i < 5; i++){
                 let playerSelection = prompt(`Type (ROCK, PAPER, OR, SCISSORS to play"). ${(5-i)} chances of 5 left`);
                 if(playerSelection === null){
                 return 'Haven\'t make any selection'
+                
             }
             playerSelection = playerSelection.toLowerCase();
             if(playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors"){
                 console.log(`${playerSelection} isn't a valid chance, try again!`)
                 i -= 1;
+            }
                 continue;
+            const res = singleRound(playerSelection, computerSelection)
+            console.log(res);
+
+            if(res.includes('win', 3)){
+                playerWinnings++;
+            }else{
+                computerWinnings++;
             }
-            const computerSelection = computerPlay();
-            console.log(singleRound(playerSelection, computerSelection))
             }
 
-           function computerPlay(){
-           let selects = ["Rock", "Paper", "Scissors"];
-           let random = Math.floor(Math.random() * selects.length);
-           let playSelect = selects[random];
-           return playSelect;       
-           }
-
-           function singleRound(playerSelection, computerSelection){
-           if(playerSelection === computerSelection){
-               declaration = 'That\s a tie';
-               return declaration;
-        }else if(playerSelection === "paper"){
-            if(computerSelection === "rock"){
-                declaration = "You win!";
-                return declaration;
-                playerWinnings++; 
-            }else if(computerSelection === "scissors"){
-                declaration = "You loose";
-                return declaration;
-                computerWinnings++;
-            }
-        }else if(playerSelection === "paper"){
-            if(computerSelection === "rock"){
-                declaration = "You win! Paper beats Rock";
-                
-                return declaration;
-                playerWinnings++;
-            }else if(computerSelection === "scissors"){
-                declaration = "You loose! Scissors beats Paper";
-                computerWinnings++;
-                return declaration;
-            }
-        }else if(playerSelection === "scissors"){
-            if(computerSelection === "paper"){
-                declaration = "You win! Scissors cut Paper";
-                return declaration;
-                playerWinnings++;
-            }else if(computerSelection === "rock"){
-                result = "You loose"
-                return declaration;
-                computerWinnings++;
+            if(playerWinnings > computerWinnings){
+                console.log("Winner!")
+            }else if(playerWinnings < computerWinnings){
+                console.log("Looser")
+            }else{
+                console.log('That\'s a tie')
             }
         }
-       }
+                
+            
 
-       //game result
-
-       if(playerWinnings > computerWinnings){
-           return (`You win, your score: ${playerWinnings} computer score: ${computerWinnings}`);
-           
-       }else if(playerWinnings < computerWinnings){
-           return (`You loose, your score: ${playerWinnings} computer: ${computerWinnings}`);
-       }else{
-           return (`It's a tie! Your score: ${playerWinnings}, computer: ${computerWinnings}`);
-          
-       }
-    }
-       
-
+    //game result
 
     </script>
 </body>
