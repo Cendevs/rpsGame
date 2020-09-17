@@ -10,8 +10,8 @@
         let selectOptions = ["Rock", "Paper", "Scissors"];
         
         function computerPlay(){
-            let random = Math.floor(Math.random() * selectOptions.length);
-            return selectOptions[random];      
+            let randomNum = Math.floor(Math.random() * selectOptions.length);
+            return selectOptions[randomNum];  
         }
 
         function singleRound(playerSelection, computerSelection){
@@ -22,46 +22,49 @@
             
             }else if(computerSelection === "rock" && playerSelection === "scissors" ||
             computerSelection === "paper" && playerSelection === "rock" ||
-            computerSelection === "scissors" && playerSelection === "paper") {
+            computerSelection === "scissors" && playerSelection === "paper"){
                 return "lose";
                 
-            }else{
+            }else if(playerSelection === "rock" && computerSelection === "rock" ||
+            playerSelection === "paper" && computerSelection === "paper" ||
+            playerSelection === "scissors" && computerSelection === "scissors"){
                 return "tie";
+            }else{
+                return "Something isn't right!"
             }
         }
 
-        function game(){
-                
+        function game(){  
             //winner counts
             let playerWinnings = 0;
             let computerWinnings = 0;
-            let computerSelection = computerPlay()
+            
+            
+            //user chances
             for(let i = 0; i < 5; i++){
                 let playerSelection = prompt(`Type (ROCK, PAPER, OR, SCISSORS to play"). ${(5-i)} chances of 5 left`);
                 if(playerSelection === null){
                 return 'Haven\'t make any selection'
-                
             }
-            playerSelection = playerSelection.toLowerCase();
-            if(playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors"){
-                console.log(`${playerSelection} isn't a valid chance, try again!`)
-                i -= 1;
-            }
-                continue;
-            const res = singleRound(playerSelection, computerSelection)
-            console.log(res);
-
+                playerSelection = playerSelection.toLowerCase();
+                let computerSelection = computerPlay()
+                console.log(`Computer Choice: ${computerSelection}.`)
+                const res = singleRound(playerSelection, computerSelection)
+                console.log(res);
+            
+            
+            //determining winner/loser
             if(res.includes('win', 3)){
-                playerWinnings++;
+                ++playerWinnings;
             }else{
-                computerWinnings++;
+                ++computerWinnings;
             }
             }
 
-            if(playerWinnings > computerWinnings){
+            if(playerWinnings < computerWinnings){
+                console.log("Loser!")
+            }else if(playerWinnings > computerWinnings){
                 console.log("Winner!")
-            }else if(playerWinnings < computerWinnings){
-                console.log("Looser")
             }else{
                 console.log('That\'s a tie')
             }
