@@ -3,77 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPS Game</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
     <script>
-        let selectOptions = ["Rock", "Paper", "Scissors"];
-        
         function computerPlay(){
-            let randomNum = Math.floor(Math.random() * selectOptions.length);
-            return selectOptions[randomNum];  
+            let playChances = ["rock", "paper", "scissors"];
+            let randomNum = Math.floor(Math.random()*playChances.length);
+            return playChances[randomNum];
         }
 
         function singleRound(playerSelection, computerSelection){
-            if(playerSelection === "rock" && computerSelection === "scissors" ||
-            playerSelection === "paper" && computerSelection === "rock" ||
-            playerSelection === "scissors"&&computerSelection === "paper"){
-            return 'win';
+            //if player select rock
+            if(playerSelection === "rock"){
+                switch(computerSelection){
+                    case 0: "rock"
+                    return "A tie";
+                        break;
+                    case 1: "paper";
+                    return "You lose";
+                        break;
+                    case 2: "scissors";
+                    return "You win";
+                        break;
+
+                }
+            }
             
-            }else if(computerSelection === "rock" && playerSelection === "scissors" ||
-            computerSelection === "paper" && playerSelection === "rock" ||
-            computerSelection === "scissors" && playerSelection === "paper"){
-                return "lose";
-                
-            }else if(playerSelection === "rock" && computerSelection === "rock" ||
-            playerSelection === "paper" && computerSelection === "paper" ||
-            playerSelection === "scissors" && computerSelection === "scissors"){
-                return "tie";
-            }else{
-                return "Something isn't right!"
+            // player select paper
+            if(playerSelection === "paper"){
+                switch(computerSelection){
+                    case 0: "rock";
+                    return "You win";
+                        break;
+                    case 1: "paper";
+                    return "A tie";
+                        break;
+                    case 2: "scissors";
+                    return "You lose";
+                        break;
+                }
+            }
+            //player select scissors
+            if(playerSelection === "scissors"){
+                switch(computerSelection){
+                    case 0: "rock";
+                    return "You lose";
+                        break;
+                    case 1: "paper";
+                    return "You win";
+                        break;
+                    case 2: "scissors";
+                    return "A tie"
+                        break;
+                }
             }
         }
+        singleRound();
+        // game function with up to 5 rounds and dertination of the game winner
+        function game(){
+            let playerWins = 0;
+            let computerWins = 0;
+            let tieGame = 0;
 
-        function game(){  
-            //winner counts
-            let playerWinnings = 0;
-            let computerWinnings = 0;
-            
-            
-            //user chances
-            for(let i = 0; i < 5; i++){
-                let playerSelection = prompt(`Type (ROCK, PAPER, OR, SCISSORS to play"). ${(5-i)} chances of 5 left`);
-                if(playerSelection === null){
-                return 'Haven\'t make any selection'
-            }
-                playerSelection = playerSelection.toLowerCase();
-                let computerSelection = computerPlay()
-                console.log(`Computer Choice: ${computerSelection}.`)
-                const res = singleRound(playerSelection, computerSelection)
+            for(let i=0; i<5; i++){
+                const playerSelection = prompt(`(Type rock, paper or scissors to play) ${5-i} chances of 5 left`).toLowerCase();
+                const computerSelection = computerPlay();
+                console.log(`computer played ${computerSelection}.`);
+                const res = singleRound(playerSelection, computerSelection);
                 console.log(res);
-            
-            
-            //determining winner/loser
-            if(res.includes('win', 3)){
-                ++playerWinnings;
-            }else{
-                ++computerWinnings;
-            }
-            }
+                 
+                //winner/loser/tie count & declaration
+                if(res && res.includes("You win", 3)){
+                    ++playerWins;
+                }
+                else if(res && res.includes("You lose", 3)){
+                    computerWins++;
+                }
+                else{
+                    ++tieGame;
+                }
 
-            if(playerWinnings < computerWinnings){
-                console.log("Loser!")
-            }else if(playerWinnings > computerWinnings){
-                console.log("Winner!")
-            }else{
-                console.log('That\'s a tie')
-            }
-        }
+                if(playerWins > computerWins){
+                    console.log("Winner!")
+                }
+                else if(playerWins < computerWins){
+                    console.log("Loser");
+                }
+                else{
+                    console.log("You got a tie game!")
+                }
                 
+            }
+            
             
 
-    //game result
-
+        }
     </script>
+    
 </body>
 </html>
