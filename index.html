@@ -7,98 +7,71 @@
 </head>
 <body>
     <script>
-        function computerPlay(){
-            let playChances = ["rock", "paper", "scissors"];
-            let randomNum = Math.floor(Math.random()*playChances.length);
+        //array of computer play chances
+        let playChances = ["rock", "paper", "scissors"];
+        //computer play: getting roundom values for computer selection
+        const computerPlay = () => {
+            randomNum = Math.floor(Math.random()*playChances.length);
             return playChances[randomNum];
-        }
-
-        function singleRound(playerSelection, computerSelection){
-            //if player select rock
-            if(playerSelection === "rock"){
-                switch(computerSelection){
-                    case 0: "rock"
-                    return "A tie";
-                        break;
-                    case 1: "paper";
-                    return "You lose";
-                        break;
-                    case 2: "scissors";
-                    return "You win";
-                        break;
-
-                }
+        };
+        //single rounds play function
+        const singleRound = (playerSelection, computerSelection) => {
+            //nested ifs and else ifs statment
+            if(playerSelection != computerSelection){
+                if(playerSelection === "rock" && computerSelection === "paper"){
+                    computerWins += 1;
+                    console.log("You lose");
+                
+            }else if(playerSelection === "rock" && computerSelection === "scissors"){
+                playerWins += 1;
+                console.log("You win");
+            }else if(playerSelection === "paper" && computerSelection === "scissors"){
+                computerWins+= 1;
+                console.log("You lose");
+            }else if(playerSelection === "paper" && computerSelection === "rock"){
+                playerWins += 1;
+                console.log("You win");
+            }else if(playerSelection === "scissors" && computerSelection === "rock"){
+                computerWins += 1;
+                console.log("You lose");
+            }else if(playerSelection === "scissors" && computerSelection === "paper"){
+                playerWins += 1;
+                console.log("You win");
             }
-            
-            // player select paper
-            if(playerSelection === "paper"){
-                switch(computerSelection){
-                    case 0: "rock";
-                    return "You win";
-                        break;
-                    case 1: "paper";
-                    return "A tie";
-                        break;
-                    case 2: "scissors";
-                    return "You lose";
-                        break;
-                }
+        }else{ 
+                console.log("That's a tie!")
             }
-            //player select scissors
-            if(playerSelection === "scissors"){
-                switch(computerSelection){
-                    case 0: "rock";
-                    return "You lose";
-                        break;
-                    case 1: "paper";
-                    return "You win";
-                        break;
-                    case 2: "scissors";
-                    return "A tie"
-                        break;
-                }
-            }
-        }
-        singleRound();
+           
+        };
+        
+        //declration variables
+        let playerWins = 0;
+        let computerWins = 0;
         // game function with up to 5 rounds and dertination of the game winner
-        function game(){
-            let playerWins = 0;
-            let computerWins = 0;
-            let tieGame = 0;
-
-            for(let i=0; i<5; i++){
+        const game = () => {
+            // a 'for loop' to get maximum of 5 rounds of play
+            for(let i = 0; i < 5; i++){
                 const playerSelection = prompt(`(Type rock, paper or scissors to play) ${5-i} chances of 5 left`).toLowerCase();
                 const computerSelection = computerPlay();
                 console.log(`computer played ${computerSelection}.`);
                 const res = singleRound(playerSelection, computerSelection);
                 console.log(res);
-                 
-                //winner/loser/tie count & declaration
-                if(res && res.includes("You win", 3)){
-                    ++playerWins;
-                }
-                else if(res && res.includes("You lose", 3)){
-                    computerWins++;
-                }
-                else{
-                    ++tieGame;
-                }
-
-                if(playerWins > computerWins){
-                    console.log("Winner!")
-                }
-                else if(playerWins < computerWins){
-                    console.log("Loser");
-                }
-                else{
-                    console.log("You got a tie game!")
-                }
                 
             }
+            //delcaration of winner/loser/tie after each 5 rounds
+            if(playerWins > computerWins){
+                    console.log("Final remark: You are the Winner! Cheers.")
+                }
+                else if(playerWins < computerWins){
+                    console.log("Final remark: You Lose! ow-ow-o-ow-ow.");
+                }
+                else if(playerWins === computerWins){
+                    console.log(" Final remark: You got a tie game!");
+                }    
             
-            
-
         }
+        //function evocation/call
+        game();
     </script>
     
 </body>
