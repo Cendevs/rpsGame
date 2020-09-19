@@ -1,0 +1,2 @@
+A grade-school classic “rock paper scissors” game. For the moment we’re just going to play the game from the browser console, but it will be revisited to add a front end later.
+It has 5 chances(rounds) of play, after which a winner or loser is declare between the player (human) and computer. It's realy fun. Take a look!
