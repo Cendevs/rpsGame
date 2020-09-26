@@ -12,10 +12,17 @@ h1{
 
 #score-board{
     margin: auto;
+    margin-bottom: 2em;
     display: flex;
     justify-content: space-around;
     text-justify: center;
     border: 2px dotted black;
+}
+
+@media(width: 599px){
+    #score-board{
+        width: 60%;
+    }
 }
 
 #player{
@@ -45,12 +52,12 @@ h1{
 
 #result{
     margin: auto;
-    margin-top: 1.5em;
+    margin-top: 2em;
     background-color: white;
     text-align: center;
     border: 5px dotted red;
     border-radius: 50%;
-    width: 60%;
+    width: 30%;
     height: 100px;
 }
 
