@@ -19,11 +19,6 @@ h1{
     border: 2px dotted black;
 }
 
-@media(width: 599px){
-    #score-board{
-        width: 60%;
-    }
-}
 
 #player{
     display: flex;
@@ -57,9 +52,20 @@ h1{
     text-align: center;
     border: 5px dotted red;
     border-radius: 50%;
-    width: 30%;
+    width: 50%;
     height: 100px;
 }
+
+@media only screen and (min-width: 599px){
+    #reult{
+        width: 80%;
+    }
+    #res{
+        font-size: 1rem;
+        margin-top: 1.5em;
+    }
+}
+
 
 .endGame{
     text-align: center;
@@ -70,7 +76,7 @@ h1{
 }
 
 #res{
-    padding-top: 0.9em;
+    padding-top: 0.7em;
 }
 
 #btn{
