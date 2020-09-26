@@ -52,17 +52,17 @@ h1{
     text-align: center;
     border: 5px dotted red;
     border-radius: 50%;
-    width: 50%;
+    width: 60%;
     height: 100px;
 }
 
-@media only screen and (min-width: 599px){
-    #reult{
-        width: 80%;
+@media only screen and (max-width: 599px){
+    #result{
+        width: 90%;
     }
     #res{
         font-size: 1rem;
-        margin-top: 1.5em;
+        margin-top: 1em;
     }
 }
 
