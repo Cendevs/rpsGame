@@ -1,0 +1,124 @@
+body{
+    background-color: blue;
+    overflow: hidden;
+}
+
+h1{
+    font-family: impact;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+#score-board{
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    text-justify: center;
+    border: 2px dotted black;
+}
+
+#player{
+    display: flex;
+    
+}
+#pWins{
+    margin-left: 1em;
+}
+
+#computer{
+    display: flex;
+}
+
+.cWins{
+    margin-left: 1em;
+}
+
+#tiePlay{
+    display: flex;
+
+}
+
+#tie{
+    margin-left: 1em;
+}
+
+#result{
+    margin: auto;
+    margin-top: 1.5em;
+    background-color: white;
+    text-align: center;
+    border: 5px dotted red;
+    border-radius: 50%;
+    width: 60%;
+    height: 100px;
+}
+
+.endGame{
+    text-align: center;
+    margin-top: 1em;
+    color: red;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+#res{
+    padding-top: 0.9em;
+}
+
+#btn{
+    margin: auto;
+    margin-top: 2em;
+    text-align: center;
+    background-color: red;
+    height: 100px;
+    width: 70%;  
+
+}
+
+.button{
+    margin-top: 1.3em;
+    height: 50px;
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 50%;
+    box-shadow: 20 20 20 20px;
+    font-size: 1.3rem;
+}
+
+button:hover{
+    color: pink;
+    background-color: green;
+    cursor: pointer;
+}
+
+#rock{
+    background-color: aqua;
+    color:saddlebrown;
+    cursor: pointer;
+}
+
+#scissors{
+    background-color: burlywood;
+    color: whitesmoke
+}
+
+#paper{
+    background-color: white;
+    color:cadetblue;
+    cursor: pointer;
+}
+
+
+#replaybtn{
+    margin: auto;
+    display: flex;
+}
+
+#replay{
+    margin: auto;
+    margin-top: 2em;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}

@@ -3,76 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <script>
-        //array of computer play chances
-        let playChances = ["rock", "paper", "scissors"];
-        //computer play: getting roundom values for computer selection
-        const computerPlay = () => {
-            randomNum = Math.floor(Math.random()*playChances.length);
-            return playChances[randomNum];
-        };
-        //single rounds play function
-        const singleRound = (playerSelection, computerSelection) => {
-            //nested ifs and else ifs statment
-            if(playerSelection != computerSelection){
-                if(playerSelection === "rock" && computerSelection === "paper"){
-                    computerWins += 1;
-                    console.log("You lose");
-                
-            }else if(playerSelection === "rock" && computerSelection === "scissors"){
-                playerWins += 1;
-                console.log("You win");
-            }else if(playerSelection === "paper" && computerSelection === "scissors"){
-                computerWins+= 1;
-                console.log("You lose");
-            }else if(playerSelection === "paper" && computerSelection === "rock"){
-                playerWins += 1;
-                console.log("You win");
-            }else if(playerSelection === "scissors" && computerSelection === "rock"){
-                computerWins += 1;
-                console.log("You lose");
-            }else if(playerSelection === "scissors" && computerSelection === "paper"){
-                playerWins += 1;
-                console.log("You win");
-            }
-        }else{ 
-                console.log("That's a tie!")
-            }
-           
-        };
-        
-        //declration variables
-        let playerWins = 0;
-        let computerWins = 0;
-        // game function with up to 5 rounds and dertination of the game winner
-        const game = () => {
-            // a 'for loop' to get maximum of 5 rounds of play
-            for(let i = 0; i < 5; i++){
-                const playerSelection = prompt(`(Type rock, paper or scissors to play) ${5-i} chances of 5 left`).toLowerCase();
-                const computerSelection = computerPlay();
-                console.log(`computer played ${computerSelection}.`);
-                const res = singleRound(playerSelection, computerSelection);
-                console.log(res);
-                
-            }
-            //delcaration of winner/loser/tie after each 5 rounds
-            if(playerWins > computerWins){
-                    console.log("Final remark: You are the Winner! Cheers.")
-                }
-                else if(playerWins < computerWins){
-                    console.log("Final remark: You Lose! ow-ow-o-ow-ow.");
-                }
-                else if(playerWins === computerWins){
-                    console.log(" Final remark: You got a tie game!");
-                }    
-            
-        }
-        //function evocation/call
-        game();
-    </script>
+    <h1>Popular Rock Paper Scissors Game By Cendevs</h1>
+
+    <div id="score-board">
+        <div id="player">
+            <h2>Player:</h2>
+            <h2 id="pWins">0</h2>
+        </div>
     
+        <div id="tiePlay">
+            <h2>Tie:</h2>
+            <h2 id="tie">0</h2>
+        </div>
+    
+        <div id="computer">
+            <h2>Computer:</h2>
+            <h2 class="cWins">0</h2>
+        </div>
+            </div>
+        </div>
+    </div>
+    <div id="result">
+        <h3 id="res"></h3>    
+    </div>
+
+    <div class="endGame"></div>
+    
+    <div id="btn">
+        <button class="button" id="rock">Rock</button>
+        <button class="button" id="paper">Paper</button>
+        <button class="button" id="scissors">Scissors</button>
+    </div>
+
+    <div id="replaybtn">
+        <button id="replay" onload="displayHide()"></button>
+    </div>
+<script src="script.js"></script>
 </body>
 </html>
