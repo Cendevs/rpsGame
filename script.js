@@ -18,11 +18,12 @@ const btnSS = document.querySelector('#scissors');
 let playerWins = document.querySelector('#pWins');
 let drawGame = document.querySelector('#tie')
 let computerWins = document.querySelector('.cWins');
-let result = document.querySelector('#res')
-let endGame = document.querySelector('.endGame')
-const replay = document.querySelector('#replay') 
+let result = document.querySelector('#res');
+let endGame = document.querySelector('.endGame');
+const replay = document.querySelector('#replay');
 
 //single rounds play function
+document.querySelector('#res').textContent = "Select Rock, Paper or Scissors to play"
 const singleRound = (playerSelection, computerSelection) => {
     //nested ifs and else ifs statment
     if(playerSelection != computerSelection){
@@ -61,6 +62,10 @@ const singleRound = (playerSelection, computerSelection) => {
         document.querySelector("#res").textContent = 'That\'s a tie';
         console.log("That's a tie!")
     }
+
+    else{
+        document.querySelector('#res').textContent = "Select Rock, Paper or Scissors to play";
+    }
     
 };
 
@@ -68,7 +73,10 @@ const singleRound = (playerSelection, computerSelection) => {
 function displayHide(){
     replay.style.visibility = "hidden";
 }
-displayHide()
+//displayHide()
+document.querySelector('#replay').disabled = true;
+endGame.textContent = "Game on!";
+endGame.style.color ="green";
 function game(){
     singleRound(playerSelection, computerSelection)
         if(playerScore >= 5){
@@ -123,7 +131,8 @@ function gameOver(){
     document.querySelector('#scissors').disabled = true;
     endGame.textContent = "Game Over!"
     endGame.style.color = 'red'
-    replay.textContent = "Play Again!";
+    document.querySelector('#replay').disabled = false;
+    replay.textContent = "Restart";
     displayShow()
     
 }
@@ -132,7 +141,6 @@ function gameOver(){
 replay.addEventListener('click', ()=>{
     playAgain();
 });
-
 function playAgain(){
     //game();
     document.querySelector('#rock').disabled = false;
@@ -140,7 +148,7 @@ function playAgain(){
     document.querySelector('#scissors').disabled = false;
     endGame.textContent = "Game on!";
     endGame.style.color = "green"
-    document.querySelector('#res').textContent = " "
+    document.querySelector('#res').textContent = "Select Rock, Paper or Scissors to play"
     playerScore = 0; 
     computerScore = 0;
     tieGame = 0;

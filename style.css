@@ -1,6 +1,6 @@
 body{
     background-color: blue;
-    overflow: hidden;
+    overflow-x: hidden;
     
 }
 
@@ -51,7 +51,7 @@ h1{
     margin-top: 2em;
     background-color: white;
     text-align: center;
-    border: 5px dotted red;
+    border: 2px solid red;
     border-radius: 50%;
     width: 50%;
     height: 100px;
@@ -152,4 +152,24 @@ button:hover{
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+#guide > h2{
+    text-align: center;
+}
+
+@media only screen and (max-width: 599px){
+    ul{
+        flex-direction: column;
+        align-items: center;
+       
+    }
+    ul li{
+        padding-bottom: 2em;
+    }
 }
